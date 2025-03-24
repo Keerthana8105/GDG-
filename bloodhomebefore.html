@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation App</title>
+    <link rel="stylesheet" href="bloodhomebefore.css">
+</head>
+<body>
+    <header>
+        <h1>LifeLink Blood Donation</h1>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#find">Find Donors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <a href="bloodlogin.html">Login</a>
+                <a href="bloodsignup.html">Signup</a>
+            </div>
+        </div>
+    </header>
+    
+    <section id="home" class="hero">
+        <img src="WhatsApp Image 2025-03-22 at 15.33.05_993973df.jpg" alt="Blood Donation" class="hero-image">
+        <h2>Donate Blood, Save Lives</h2>
+        <p>Your donation can save a life. Join us today!</p>
+        <button onclick="donateNow()">Register Now</button>
+    </section>
+    
+    <section id="find">
+        <h2>Find a Donor</h2>
+        <div class="find-container">
+            <img src="blood donation.png.jpg" alt="Find a Donor" class="section-image">
+            <div class="search-area">
+                <input type="text" id="search" placeholder="Enter blood type...">
+                <button onclick="searchDonor()">Search</button>
+            </div>
+        </div>
+        <div id="donor-results"></div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 LifeLink Blood Donation. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="bloodhomebefore.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile - LifeLink Blood Donation</title>
+  <link rel="stylesheet" href="editprofile.css">
+</head>
+<body>
+
+  <header>
+    <h1>Edit Profile</h1>
+  </header>
+
+  <main class="edit-container">
+    <form class="edit-form">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" value="Keerthana" required>
+
+      <label for="blood-group">Blood Group:</label>
+      <select id="blood-group" required>
+        <option value="O+" selected>O+</option>
+        <option value="O-">O-</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+      </select>
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" value="New York, USA" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" value="keerthanakatumala@gmail.com" required>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" value="7382202099" required>
+
+      <label for="last-donation">Last Donation Date:</label>
+      <input type="date" id="last-donation" value="2025-03-15">
+
+      <label for="total-donations">Total Donations:</label>
+      <input type="number" id="total-donations" value="2" min="0">
+
+      <div class="buttons">
+        <button type="submit" class="save-btn">Save Changes</button>
+        <a href="myprofile.html" class="cancel-btn">Cancel</a>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 LifeLink Blood Donation. All Rights Reserved.</p>
+  </footer>
+
+  <script src="editprofile.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Connect</title>
+    <link rel="stylesheet" href="Blood.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script>
+        let donors = [
+            { name: "Ravi Kumar", bloodType: "A+", location: "East Godavari", contact: "9876543210", lat: 17.0151, lon: 82.2149 },
+            { name: "Sita Devi", bloodType: "B+", location: "West Godavari", contact: "9876543211", lat: 16.7107, lon: 81.0956 },
+            { name: "Kiran Reddy", bloodType: "O+", location: "Vizag", contact: "9876543212", lat: 17.6868, lon: 83.2185 },
+            { name: "Anusha Rao", bloodType: "AB+", location: "East Godavari", contact: "9876543213", lat: 17.0272, lon: 82.2366 },
+            { name: "Mahesh Varma", bloodType: "A-", location: "West Godavari", contact: "9876543214", lat: 16.7843, lon: 81.5212 },
+            { name: "Lakshmi Prasad", bloodType: "B-", location: "Vizag", contact: "9876543215", lat: 17.7288, lon: 83.2984 },
+            { name: "Rajesh Naidu", bloodType: "O-", location: "East Godavari", contact: "9876543216", lat: 17.0424, lon: 82.2517 },
+            { name: "Divya Sharma", bloodType: "AB-", location: "West Godavari", contact: "9876543217", lat: 16.7894, lon: 81.4823 }
+        ];
+
+        function searchDonors() {
+            var searchBloodType = document.getElementById("searchBloodType").value;
+            var donorList = document.getElementById("donorList");
+            donorList.innerHTML = "";
+
+            let filteredDonors = donors.filter(donor => donor.bloodType.toUpperCase() === searchBloodType.toUpperCase());
+            displayDonorsOnMap(filteredDonors);
+        }
+
+        function displayDonorsOnMap(donors) {
+            var map = L.map('map').setView([17.5, 82.0], 7);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            donors.forEach(donor => {
+                L.marker([donor.lat, donor.lon]).addTo(map)
+                    .bindPopup(`<b>${donor.name}</b><br>Blood Type: ${donor.bloodType}<br>Contact: ${donor.contact}`);
+            });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    var userLat = position.coords.latitude;
+                    var userLon = position.coords.longitude;
+                    L.marker([userLat, userLon], { color: 'blue' })
+                        .addTo(map)
+                        .bindPopup("<b>You are here</b>")
+                        .openPopup();
+                    map.setView([userLat, userLon], 10);
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <a href="bloodhomeafter.html" class="back-btn">Back</a>
+    <h1>Blood Donation Connect</h1>
+
+    <div class="container">
+        <h2>Find a Donor</h2>
+        <input type="text" id="searchBloodType" placeholder="Enter Blood Type (e.g., A+)">
+        <button onclick="searchDonors()">Search</button>
+        <div id="donorList"></div>
+    </div>
+
+    <div class="container">
+        <h2>Nearby Donors</h2>
+        <div id="map" style="height: 500px; width: 100%;"></div>
+    </div>
+</body>
+</html>
